@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { users } from '../../data/users';
 import styles from './UserTable.style';
 
-const spec = [
+const columnSpec = [
   { header: 'ID', column: 'id' },
   { header: 'Name', column: 'name' },
   { header: 'E-mail', column: 'email' },
@@ -39,7 +39,9 @@ class UserTable extends Component {
     return (
       <thead>
         <tr>
-          {spec.map((spec, index) => this.renderHeaderColumn(spec, index))}
+          {columnSpec.map((spec, index) =>
+            this.renderHeaderColumn(spec, index)
+          )}
         </tr>
         <style jsx>{styles}</style>
       </thead>

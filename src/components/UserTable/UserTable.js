@@ -2,6 +2,13 @@ import React, { Fragment, Component } from 'react';
 import { users } from '../../data/users';
 import styles from './UserTable.style';
 
+const spec = [
+  { header: 'ID', column: 'id' },
+  { header: 'Name', column: 'name' },
+  { header: 'E-mail', column: 'email' },
+  { header: 'Delete', column: 'delete' },
+];
+
 class UserTable extends Component {
   renderRow() {
     return (
@@ -19,14 +26,20 @@ class UserTable extends Component {
     return users.map(() => this.renderRow());
   }
 
+  renderHeaderColumn = ({ header }, index) => {
+    return (
+      <td key={index}>
+        {header}
+        <style jsx>{styles}</style>
+      </td>
+    );
+  };
+
   renderTableHeader() {
     return (
       <thead>
         <tr>
-          <td>id</td>
-          <td>name</td>
-          <td>email</td>
-          <td>delete</td>
+          {spec.map((spec, index) => this.renderHeaderColumn(spec, index))}
         </tr>
         <style jsx>{styles}</style>
       </thead>

@@ -50,6 +50,7 @@ export default css`
     letter-spacing: 0.5px;
     text-align: center;
     margin-bottom: 16px;
+    font-weight: bold;
   }
 
   .modal__button {
@@ -81,6 +82,10 @@ export default css`
 
   .add-user-form__group {
     height: 58px;
+
+    &--last {
+      margin-bottom: 20px;
+    }
   }
 
   .add-user-form__label {

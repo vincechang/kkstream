@@ -54,7 +54,7 @@ const Modal = ({ isOpen }) => {
               </div>
             ) : null}
           </div>
-          <div className="add-user-form__group">
+          <div className="add-user-form__group add-user-form__group--last">
             <label className="add-user-form__label" htmlFor="email">
               Email
             </label>

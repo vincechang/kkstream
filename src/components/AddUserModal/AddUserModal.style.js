@@ -73,18 +73,11 @@ export default css`
     color: black;
     border: 1px solid black;
 
-    &--cancel:hover {
-      color: red;
-      border: 1px solid red;
+    &--cancel {
     }
 
     &--add {
       margin-left: 7px;
-
-      &:hover {
-        color: blue;
-        border: 1px solid blue;
-      }
     }
   }
 `;

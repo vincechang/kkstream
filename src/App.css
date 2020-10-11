@@ -36,3 +36,8 @@ button {
 button:focus {
   outline: none;
 }
+
+button:hover {
+  color: red;
+  border: 1px solid red;
+}

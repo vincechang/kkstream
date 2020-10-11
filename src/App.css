@@ -16,6 +16,9 @@
   font-size: calc(10px + 2vmin);
   height: 100px;
 }
+* {
+  user-select: none;
+}
 
 .App-main {
   display: flex;

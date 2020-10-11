@@ -5,6 +5,7 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState: {
     value: [],
+    sortBy: 'id-asc',
     isLoading: false,
     error: false,
   },
@@ -31,6 +32,9 @@ export const usersSlice = createSlice({
       );
       state.value = newValue;
     },
+    sortBy: (state, { payload }) => {
+      state.sortBy = payload;
+    },
     fetch: (state) => {
       state.isLoading = true;
     },
@@ -48,6 +52,7 @@ export const usersSlice = createSlice({
 export const {
   addUser,
   removeById,
+  sortBy,
   fetch,
   fetchSuccess,
   hasError,
@@ -65,5 +70,6 @@ export const fetchUsers = () => async (dispatch) => {
 };
 
 export const selectUsers = (state) => state.users.value;
+export const selectSorting = (state) => state.users.sortBy;
 
 export default usersSlice.reducer;

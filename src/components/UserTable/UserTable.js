@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import {
+  selectFilter,
   selectSorting,
   selectUsers,
   fetchUsers,
@@ -44,8 +45,8 @@ class UserTable extends Component {
   }
 
   renderRows() {
-    const { users, sortBy } = this.props;
-    const data = getFilterAndSorted(users, sortBy);
+    const { users, filter, sortBy } = this.props;
+    const data = getFilterAndSorted(users, filter, sortBy);
 
     return data.map((item, index) => this.renderRow(item, columnSpec, index));
   }
@@ -86,6 +87,7 @@ class UserTable extends Component {
 }
 
 const mapState = (state) => ({
+  filter: selectFilter(state),
   users: selectUsers(state),
   sortBy: selectSorting(state),
 });

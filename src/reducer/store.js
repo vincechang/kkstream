@@ -1,7 +1,8 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import users from './slices/users';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
+import ui from './slices/ui';
+import users from './slices/users';
 
 const client = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com',
@@ -9,7 +10,8 @@ const client = axios.create({
 });
 
 const reducer = combineReducers({
-  users: users,
+  ui,
+  users,
 });
 
 export default configureStore({

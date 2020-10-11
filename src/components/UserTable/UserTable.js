@@ -6,7 +6,7 @@ import {
   selectUsers,
   fetchUsers,
 } from '../../reducer/slices/users';
-import getfilterAndSorted from '../../utils/getFilteredAndSorted';
+import getFilterAndSorted from '../../utils/getFilteredAndSorted';
 import styles from './UserTable.style';
 
 const columnSpec = [
@@ -45,7 +45,7 @@ class UserTable extends Component {
 
   renderRows() {
     const { users, sortBy } = this.props;
-    const data = getfilterAndSorted(users, sortBy);
+    const data = getFilterAndSorted(users, sortBy);
 
     return data.map((item, index) => this.renderRow(item, columnSpec, index));
   }

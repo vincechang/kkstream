@@ -5,26 +5,42 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState: {
     value: [],
+    isLoading: false,
+    error: false,
   },
   reducers: {
     add: (state) => {},
     remove: (state) => {},
+    fetch: (state) => {
+      state.isLoading = true;
+    },
     fetchSuccess: (state, action) => {
       state.value = action.payload;
+      state.isLoading = false;
+    },
+    hasError: (state, action) => {
+      state.error = action.payload;
       state.isLoading = false;
     },
   },
 });
 
-export const { add, remove, fetchSuccess } = usersSlice.actions;
+export const {
+  add,
+  remove,
+  fetch,
+  fetchSuccess,
+  hasError,
+} = usersSlice.actions;
 
 export const fetchUsers = () => async (dispatch) => {
+  dispatch(fetch());
   try {
     await api
       .get('/users')
       .then((response) => dispatch(fetchSuccess(response.data)));
   } catch (e) {
-    return console.error(e.message);
+    dispatch(hasError(e.message));
   }
 };
 

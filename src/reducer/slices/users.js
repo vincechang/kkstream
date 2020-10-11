@@ -70,5 +70,6 @@ export const fetchUsers = () => async (dispatch) => {
 };
 
 export const selectUsers = (state) => state.users.value;
+export const selectSorting = (state) => state.users.sortBy;
 
 export default usersSlice.reducer;

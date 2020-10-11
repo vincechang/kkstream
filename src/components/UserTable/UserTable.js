@@ -1,7 +1,11 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
 import DeleteButton from '../DeleteButton/DeleteButton';
-import { selectUsers, fetchUsers } from '../../reducer/slices/users';
+import {
+  selectSorting,
+  selectUsers,
+  fetchUsers,
+} from '../../reducer/slices/users';
 import styles from './UserTable.style';
 
 const columnSpec = [
@@ -81,6 +85,7 @@ class UserTable extends Component {
 
 const mapState = (state) => ({
   users: selectUsers(state),
+  sortBy: selectSorting(state),
 });
 
 const mapDispatch = {

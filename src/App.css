@@ -10,3 +10,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
 }
+
+button {
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: calc(7px + 2vmin);
+}

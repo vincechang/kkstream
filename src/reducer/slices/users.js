@@ -10,7 +10,12 @@ export const usersSlice = createSlice({
   },
   reducers: {
     add: (state) => {},
-    remove: (state) => {},
+    removeById: (state, action) => {
+      const newValue = state.value.filter(
+        (item) => item.id !== action.payload.id
+      );
+      state.value = newValue;
+    },
     fetch: (state) => {
       state.isLoading = true;
     },
@@ -27,7 +32,7 @@ export const usersSlice = createSlice({
 
 export const {
   add,
-  remove,
+  removeById,
   fetch,
   fetchSuccess,
   hasError,

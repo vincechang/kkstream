@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
+import DeleteButton from '../DeleteButton/DeleteButton';
 import { selectUsers, fetchUsers } from '../../reducer/slices/users';
 import styles from './UserTable.style';
 
@@ -7,7 +8,11 @@ const columnSpec = [
   { header: 'ID', column: 'id' },
   { header: 'Name', column: 'name' },
   { header: 'E-mail', column: 'email' },
-  { header: 'Delete', column: 'delete' },
+  {
+    header: 'Delete',
+    column: 'delete',
+    util: (item) => <DeleteButton item={item} />,
+  },
 ];
 
 class UserTable extends Component {
@@ -15,18 +20,18 @@ class UserTable extends Component {
     this.props.fetchUsers();
   }
 
-  renderColumn(item, { column }) {
+  renderColumn(item, { column, util }, index) {
     return (
-      <td>
-        {item[column]}
+      <td key={index}>
+        {util ? util(item) : item[column]}
         <style jsx>{styles}</style>
       </td>
     );
   }
 
-  renderRow(item, columnSpec) {
+  renderRow(item, columnSpec, index) {
     return (
-      <tr>
+      <tr key={index}>
         {columnSpec.map((spec, i) => this.renderColumn(item, spec, i))}
         <style jsx>{styles}</style>
       </tr>
@@ -34,12 +39,14 @@ class UserTable extends Component {
   }
 
   renderRows() {
-    return this.props.users.map((item) => this.renderRow(item, columnSpec));
+    return this.props.users.map((item, index) =>
+      this.renderRow(item, columnSpec, index)
+    );
   }
 
-  renderHeaderColumn = ({ header }) => {
+  renderHeaderColumn = ({ header }, index) => {
     return (
-      <td>
+      <td key={index}>
         {header}
         <style jsx>{styles}</style>
       </td>
@@ -49,7 +56,11 @@ class UserTable extends Component {
   renderTableHeader() {
     return (
       <thead>
-        <tr>{columnSpec.map((spec) => this.renderHeaderColumn(spec))}</tr>
+        <tr>
+          {columnSpec.map((spec, index) =>
+            this.renderHeaderColumn(spec, index)
+          )}
+        </tr>
         <style jsx>{styles}</style>
       </thead>
     );

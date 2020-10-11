@@ -1,27 +1,16 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import UserTable from './components/UserTable/UserTable';
+import { useSelector } from 'react-redux';
+import AddUserButton from './components/AddUserButton/AddUserButton';
 import AddUserModal from './components/AddUserModal/AddUserModal';
-import { openAddUserModal } from './reducer/slices/ui';
+import UserTable from './components/UserTable/UserTable';
 import './App.css';
 
 const App = () => {
-  const dispatch = useDispatch();
   const { isOpenAddUserModal } = useSelector((state) => state.ui);
   return (
     <div className="App">
       <header className="App-header">
-        <button
-          className="add-user-button"
-          onClick={() => dispatch(openAddUserModal())}
-        >
-          Add User
-        </button>
-        <style jsx>{`
-          .add-user-button {
-            margin-left: auto;
-          }
-        `}</style>
+        <AddUserButton />
       </header>
       <div className="App-main">
         <UserTable />

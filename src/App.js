@@ -1,15 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import AddUserButton from './components/AddUserButton/AddUserButton';
+import AddUserModal from './components/AddUserModal/AddUserModal';
 import UserTable from './components/UserTable/UserTable';
 import './App.css';
 
-function App() {
+const App = () => {
+  const { isOpenAddUserModal } = useSelector((state) => state.ui);
   return (
     <div className="App">
       <header className="App-header">
-        <UserTable />
+        <AddUserButton />
       </header>
+      <div className="App-main">
+        <UserTable />
+        <AddUserModal isOpen={isOpenAddUserModal} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

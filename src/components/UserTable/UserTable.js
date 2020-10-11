@@ -6,7 +6,7 @@ import styles from './UserTable.style';
 
 const columnSpec = [
   { header: 'ID', column: 'id' },
-  { header: 'Name', column: 'name' },
+  { header: 'Name', column: 'username' },
   { header: 'E-mail', column: 'email' },
   {
     header: 'Delete',

@@ -17,6 +17,9 @@ const FilterInput = () => {
         onChange={(e) => {
           dispatch(setFilter(idx(e, (_) => e.target.value)));
         }}
+        onKeyDown={(e) => {
+          if (idx(e, (_) => _.key) == 'Escape') dispatch(setFilter(''));
+        }}
       ></input>
       <style jsx>{styles}</style>
     </Fragment>

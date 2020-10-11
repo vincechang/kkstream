@@ -72,6 +72,7 @@ const Modal = ({ isOpen }) => {
           </div>
           <button
             className="modal__button--cancel"
+            type="button"
             onClick={handleClickCancelButton}
           >
             Cancel

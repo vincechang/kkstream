@@ -1,27 +1,8 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
+import DeleteButton from '../DeleteButton/DeleteButton';
 import { selectUsers, fetchUsers } from '../../reducer/slices/users';
 import styles from './UserTable.style';
-
-const DeleteButton = () => (
-  <button className="delete-button" type="button">
-    Delete
-    <style jsx>{`
-      .delete-button {
-        margin-bottom: 7px;
-
-        &:hover {
-          color: red;
-          border: 1px solid red;
-        }
-
-        &:focus {
-          outline: none;
-        }
-      }
-    `}</style>
-  </button>
-);
 
 const columnSpec = [
   { header: 'ID', column: 'id' },

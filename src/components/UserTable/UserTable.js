@@ -8,7 +8,11 @@ const columnSpec = [
   { header: 'ID', column: 'id' },
   { header: 'Name', column: 'name' },
   { header: 'E-mail', column: 'email' },
-  { header: 'Delete', column: 'delete', util: DeleteButton },
+  {
+    header: 'Delete',
+    column: 'delete',
+    util: (item) => <DeleteButton item={item} />,
+  },
 ];
 
 class UserTable extends Component {
@@ -19,7 +23,7 @@ class UserTable extends Component {
   renderColumn(item, { column, util }, index) {
     return (
       <td key={index}>
-        {util ? util() : item[column]}
+        {util ? util(item) : item[column]}
         <style jsx>{styles}</style>
       </td>
     );

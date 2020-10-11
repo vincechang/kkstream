@@ -9,9 +9,17 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <button className="add-user-button">Add User</button>
+        <style jsx>{`
+          .add-user-button {
+            margin-left: auto;
+          }
+        `}</style>
+      </header>
+      <div className="App-main">
         <UserTable />
         <AddUserModal isOpen={isOpenAddUserModal} />
-      </header>
+      </div>
     </div>
   );
 };

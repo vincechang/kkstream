@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { openAddUserModal } from '../../reducer/slices/ui';
+import style from './AddUserButton.style';
 
 const AddUserButton = () => {
   const dispatch = useDispatch();
@@ -12,11 +13,7 @@ const AddUserButton = () => {
       >
         Add User
       </button>
-      <style jsx>{`
-        .add-user-button {
-          margin-left: auto;
-        }
-      `}</style>
+      <style jsx>{style}</style>
     </Fragment>
   );
 };

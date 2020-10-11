@@ -50,11 +50,6 @@ export default css`
       align-items: center;
       justify-content: center;
       height: 40px;
-
-      &:hover {
-        color: red;
-        cursor: pointer;
-      }
     }
   }
 `;

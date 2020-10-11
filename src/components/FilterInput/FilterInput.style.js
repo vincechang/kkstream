@@ -7,9 +7,5 @@ export default css`
     line-height: 26px;
     margin-right: 10px;
     margin-bottom: 5px;
-
-    &:focus {
-      width: 50%;
-    }
   }
 `;

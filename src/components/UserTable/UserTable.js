@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-import { selectUsers, fetchUsers } from '../../app/slices/users';
+import { selectUsers, fetchUsers } from '../../reducer/slices/users';
 import styles from './UserTable.style';
 
 const columnSpec = [

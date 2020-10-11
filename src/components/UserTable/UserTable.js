@@ -10,25 +10,31 @@ const columnSpec = [
 ];
 
 class UserTable extends Component {
-  renderRow() {
+  renderColumn(item, { column }) {
+    return (
+      <td>
+        {item[column]}
+        <style jsx>{styles}</style>
+      </td>
+    );
+  }
+
+  renderRow(item, columnSpec) {
     return (
       <tr>
-        <td>id</td>
-        <td>name</td>
-        <td>email</td>
-        <td>delete</td>
+        {columnSpec.map((spec, i) => this.renderColumn(item, spec, i))}
         <style jsx>{styles}</style>
       </tr>
     );
   }
 
   renderRows() {
-    return users.map(() => this.renderRow());
+    return users.map((item) => this.renderRow(item, columnSpec));
   }
 
-  renderHeaderColumn = ({ header }, index) => {
+  renderHeaderColumn = ({ header }) => {
     return (
-      <td key={index}>
+      <td>
         {header}
         <style jsx>{styles}</style>
       </td>
@@ -38,11 +44,7 @@ class UserTable extends Component {
   renderTableHeader() {
     return (
       <thead>
-        <tr>
-          {columnSpec.map((spec, index) =>
-            this.renderHeaderColumn(spec, index)
-          )}
-        </tr>
+        <tr>{columnSpec.map((spec) => this.renderHeaderColumn(spec))}</tr>
         <style jsx>{styles}</style>
       </thead>
     );

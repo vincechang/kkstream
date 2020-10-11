@@ -8,9 +8,5 @@ export default css`
       color: red;
       border: 1px solid red;
     }
-
-    &:focus {
-      outline: none;
-    }
   }
 `;

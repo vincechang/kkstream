@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
-import { users } from '../../data/users';
+import { connect } from 'react-redux';
+import { selectUsers, fetchUsers } from '../../reducer/slices/users';
 import styles from './UserTable.style';
 
 const columnSpec = [
@@ -10,6 +11,10 @@ const columnSpec = [
 ];
 
 class UserTable extends Component {
+  componentDidMount() {
+    this.props.fetchUsers();
+  }
+
   renderColumn(item, { column }) {
     return (
       <td>
@@ -29,7 +34,7 @@ class UserTable extends Component {
   }
 
   renderRows() {
-    return users.map((item) => this.renderRow(item, columnSpec));
+    return this.props.users.map((item) => this.renderRow(item, columnSpec));
   }
 
   renderHeaderColumn = ({ header }) => {
@@ -63,4 +68,12 @@ class UserTable extends Component {
   }
 }
 
-export default UserTable;
+const mapState = (state) => ({
+  users: selectUsers(state),
+});
+
+const mapDispatch = {
+  fetchUsers,
+};
+
+export default connect(mapState, mapDispatch)(UserTable);

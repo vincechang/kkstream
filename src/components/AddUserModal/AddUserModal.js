@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import { useDispatch } from 'react-redux';
 import { closeAddUserModal } from '../../reducer/slices/ui';
+import { addUser } from '../../reducer/slices/users';
 import styles from './AddUserModal.style';
 
 const cx = classNames.bind(styles);
@@ -11,6 +12,7 @@ const Modal = ({ isOpen }) => {
 
   const handleClickAddButton = (e) => {
     dispatch(closeAddUserModal());
+    dispatch(addUser());
   };
 
   const handleClickCancelButton = (e) => {

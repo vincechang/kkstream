@@ -9,7 +9,22 @@ export const usersSlice = createSlice({
     error: false,
   },
   reducers: {
-    add: (state) => {},
+    addUser: (
+      { value },
+      {
+        payload: { username, email } = {
+          username: 'Unknown',
+          email: 'Unknown',
+        },
+      }
+    ) => {
+      const maxId = Math.max(...value.map((user) => user.id));
+      value.push({
+        id: maxId + 1,
+        username,
+        email,
+      });
+    },
     removeById: (state, action) => {
       const newValue = state.value.filter(
         (item) => item.id !== action.payload.id
@@ -31,7 +46,7 @@ export const usersSlice = createSlice({
 });
 
 export const {
-  add,
+  addUser,
   removeById,
   fetch,
   fetchSuccess,

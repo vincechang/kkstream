@@ -5,6 +5,7 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState: {
     value: [],
+    filter: '',
     sortBy: 'id-asc',
     isLoading: false,
     error: false,
@@ -32,6 +33,9 @@ export const usersSlice = createSlice({
       );
       state.value = newValue;
     },
+    setFilter: (state, { payload }) => {
+      state.filter = payload;
+    },
     sortBy: (state, { payload }) => {
       state.sortBy = payload;
     },
@@ -52,6 +56,7 @@ export const usersSlice = createSlice({
 export const {
   addUser,
   removeById,
+  setFilter,
   sortBy,
   fetch,
   fetchSuccess,
@@ -69,7 +74,8 @@ export const fetchUsers = () => async (dispatch) => {
   }
 };
 
-export const selectUsers = (state) => state.users.value;
+export const selectFilter = (state) => state.users.filter;
 export const selectSorting = (state) => state.users.sortBy;
+export const selectUsers = (state) => state.users.value;
 
 export default usersSlice.reducer;

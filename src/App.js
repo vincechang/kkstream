@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import AddUserButton from './components/AddUserButton/AddUserButton';
 import AddUserModal from './components/AddUserModal/AddUserModal';
+import FilterInput from './components/FilterInput/FilterInput';
 import SortMenu from './components/SortMenu/SortMenu';
 import UserTable from './components/UserTable/UserTable';
 import './App.css';
@@ -11,6 +12,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <FilterInput />
         <SortMenu />
         <AddUserButton />
       </header>

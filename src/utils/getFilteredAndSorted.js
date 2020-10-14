@@ -17,8 +17,10 @@ const getFilteredAndSorted = (array = [], filter = '', sortBy = 'id-asc') => {
     },
   };
 
-  const regex = new RegExp(filter, 'g');
-  const result = [...array].filter((user) => regex.test(user.username));
+  const result = [...array].filter((user) => {
+    const username = idx(user, (_) => _.username);
+    return username.indexOf(filter) !== -1;
+  });
 
   result.sort((prev, next) => {
     return useCompare[sortBy](prev, next);
